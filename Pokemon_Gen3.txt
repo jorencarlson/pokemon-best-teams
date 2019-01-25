@@ -19,7 +19,7 @@ Hariyama - Fight
 Azurill - Normal
 Nosepass - Rock
 Delcatty - Normal
-Sableye - Dark/Ghost
+Sableye - Ghost/Dark
 Mawile - Steel
 Aggron - Steel/Rock
 Medicham - Fight/Psychic
