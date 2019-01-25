@@ -22,31 +22,11 @@ public class Pokemon {
             findWeaknesses();
             findDefenses();
             findImmunities();
-            Iterator<String> iterator = weaknesses.iterator();
-            while (iterator.hasNext()) {
+            for (Iterator<String> iterator = weaknesses.iterator(); iterator.hasNext();) {
                 String weakness = iterator.next();
-                for (String immunity : immunities) {
-                    if (weakness.equals(immunity)) {
-                        iterator.remove();
-                    }
-                }
-            }
-            iterator = weaknesses.iterator();
-            while (iterator.hasNext()) {
-                String weakness = iterator.next();
-                for (String defense : defenses) {
-                    if (weakness.equals(defense)) {
-                        iterator.remove();
-                    }
-                }
-            }
-            iterator = defenses.iterator();
-            while (iterator.hasNext()) {
-                String defense = iterator.next();
-                for (String weakness : weaknesses) {
-                    if (defense.equals(weakness)) {
-                        iterator.remove();
-                    }
+                if (defenses.contains(weakness)) {
+                    defenses.remove(weakness);
+                    iterator.remove();
                 }
             }
         }
