@@ -9,8 +9,6 @@ Installation: javac -d .. Main.java
 
 Execution: java Main
 
-
-
 Notes on program:
 
 To reduce program runtime, Pokémon are represented only by their type(s) (eg. Grass, Water/Grass). Thus, the set of type(s) is examined, as opposed to the set of Pokémon. Repeated combinations of the set of type(s) are examined, where the total number of items is the number of unique types in the game and the number of chosen items is six, which represents a full team.
