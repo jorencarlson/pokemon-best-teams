@@ -7,6 +7,6 @@ To choose the game for which best teams will be selected:
 
 Installation: javac -d .. Main.java
 
-Run: java Main
+Execution: java Main
 
 
