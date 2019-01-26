@@ -45,6 +45,7 @@ public class Game {
         this.game = game;
         swd = new StrengthsWeaknessesDefensesImmunities();
         countAllTypes();
+        addSingleTypeAttributesDoubleTypes();
 
         // addDoubleTypeStrengths() must come before addDoubleTypeWeaknesses()
         addDoubleTypeStrengths();
@@ -84,37 +85,33 @@ public class Game {
         Scanner scanner = new Scanner(myFile);
         while (scanner.hasNextLine()) {
             String nextLine = scanner.nextLine();
-            String[] nameAndTypes = nextLine.split("-");
-            String name = nameAndTypes[0].trim();
-            nameAndTypes[1] = nameAndTypes[1].trim();
-            String[] types = nameAndTypes[1].split("/");
-            if (types.length == 1) {
-                Integer typeCount = typeStats.get(types[0]);
-                if (typeCount == null) {
-                    typeStats.put(types[0], 1);
-                    this.types.add(types[0]);
+            String type = nextLine.substring(nextLine.indexOf('-') + 2);
+            Integer typeCount = typeStats.get(type);
+            if (typeCount == null) {
+                if (type.contains("/")) {
+                    doubleTypes.add(type);
                 }
-                else {
-                    typeStats.put(types[0], typeCount + 1);
+                if (type.contains("(L)")) {
+                    levTypes.add(type);
                 }
+                typeStats.put(type, 1);
+                this.types.add(type);
             }
             else {
-                String doubleType = types[0] + "/" + types[1];
-                Integer typeCount = typeStats.get(doubleType);
-                if (typeCount == null) {
-                    this.types.add(doubleType);
-                    Pokemon pokemon = new Pokemon(name, types[0], types[1]);
-                    typeStats.put(doubleType, 1);
-                    doubleTypes.add(doubleType);
-                    swd.weaknesses.put(doubleType, pokemon.weaknesses);
-                    swd.defenses.put(doubleType, pokemon.defenses);
-                    swd.strengths.put(doubleType, pokemon.strengths);
-                    swd.immunities.put(doubleType, pokemon.immunities);
-                }
-                else {
-                    typeStats.put(doubleType, typeCount + 1);
-                }
+                typeStats.put(type, typeCount + 1);
             }
+        }
+    }
+    
+    private void addSingleTypeAttributesDoubleTypes() {
+        for (String type : doubleType) {
+            String type1 = type.substring(0, type.indexOf('/'));
+            String type2 = type.substring(type.indexOf('/') + 1);
+            Pokemon pokemon = new Pokemon(type1, type2);
+            swd.weaknesses.put(type, pokemon.weaknesses);
+            swd.defenses.put(type, pokemon.defenses);
+            swd.strengths.put(type, pokemon.strengths);
+            swd.immunities.put(type, pokemon.immunities);
         }
     }
 
