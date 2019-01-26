@@ -10,9 +10,8 @@ import java.util.regex.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        //long startTime = System.nanoTime();
 
-        Game game = new Game("Gen1"); // select the pokemon generation here
+        Game game = new Game("Gen3"); // select the pokemon generation here
 
         LinkedList<String> teams = game.getTeams();
         Iterator<String> iterator = teams.iterator();
@@ -27,7 +26,5 @@ public class Main {
             }
             System.out.printf("\nTotal score: %f\n\n", totalScore);
         }
-        /*long endTime = System.nanoTime();
-        System.out.printf("%d seconds\n", (endTime - startTime)/1000000000);*/
     }
 }

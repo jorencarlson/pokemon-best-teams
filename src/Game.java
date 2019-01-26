@@ -91,9 +91,6 @@ public class Game {
                 if (type.contains("/")) {
                     doubleTypes.add(type);
                 }
-                if (type.contains("(L)")) {
-                    levTypes.add(type);
-                }
                 typeStats.put(type, 1);
                 this.types.add(type);
             }
@@ -102,9 +99,13 @@ public class Game {
             }
         }
     }
+
+     /*
+       Adds the single type weaknesses, defenses, strengths, and immunities for every double type
+     */
     
-    private void addSingleTypeAttributesDoubleTypes() {
-        for (String type : doubleType) {
+    private void addSingleTypeAttributesDoubleTypes() throws FileNotFoundException  {
+        for (String type : doubleTypes) {
             String type1 = type.substring(0, type.indexOf('/'));
             String type2 = type.substring(type.indexOf('/') + 1);
             Pokemon pokemon = new Pokemon(type1, type2);
@@ -144,12 +145,10 @@ public class Game {
             for (String type : types) {
                 for (String doubleType : doubleTypes) {
                     HashSet<String> doubleTypeWeaknesses = swd.weaknesses.get(doubleType);
-                    for (String weakness : doubleTypeWeaknesses) {
-                        if (type.equals(weakness)) {
-                            HashSet<String> newStrengths = swd.strengths.get(oneOrTwoTypes);
-                            newStrengths.add(doubleType);
-                            swd.strengths.put(oneOrTwoTypes, newStrengths);
-                        }
+                    if (doubleTypeWeaknesses.contains(type)) {
+                        HashSet<String> newStrengths = swd.strengths.get(oneOrTwoTypes);
+                        newStrengths.add(doubleType);
+                        swd.strengths.put(oneOrTwoTypes, newStrengths);
                     }
                 }
             }

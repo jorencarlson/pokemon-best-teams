@@ -9,15 +9,13 @@ public class Pokemon {
         public HashSet<String> weaknesses;
         public HashSet<String> defenses;
         public HashSet<String> immunities;
-        public String name;
         private StrengthsWeaknessesDefensesImmunities swd;
 
-        public Pokemon(String name, String type1, String type2) throws FileNotFoundException {
+        public Pokemon(String type1, String type2) throws FileNotFoundException {
             swd = new StrengthsWeaknessesDefensesImmunities();
             types = new String[2];
             types[0] = type1;
             types[1] = type2;
-            this.name = name;
             findStrengths();
             findWeaknesses();
             findDefenses();
@@ -31,11 +29,10 @@ public class Pokemon {
             }
         }
 
-        public Pokemon(String name, String type1) throws FileNotFoundException {
+        public Pokemon(String type1) throws FileNotFoundException {
             swd = new StrengthsWeaknessesDefensesImmunities();
             types = new String[1];
             types[0] = type1;
-            this.name = name;
             findStrengths();
             findWeaknesses();
             findDefenses();
