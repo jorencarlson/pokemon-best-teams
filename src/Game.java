@@ -75,8 +75,6 @@ public class Game {
 
     /*
        Goes through the list of Pokemon in the given text file and counts the number of occurrences for each type.
-       If a double type is found and not yet present in "swd", a Pokemon object is created to determine the
-       strengths, weaknesses, defenses, and immunities for the type. Those attributes are then added to "swd".
     */
 
     private void countAllTypes() throws FileNotFoundException {
