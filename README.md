@@ -15,7 +15,7 @@ To reduce program runtime, Pokémon are represented only by their type(s) (eg. G
 
 For any chosen team, it is determined whether it should be added to the set of best teams by two characteristics:
 
-1. The team must have STABs that are super effective for all of the types present in the text file of Pokémon.
+1. The team has STABs that are super effective for all of the types present in the text file of Pokémon.
 
 2. The team score is the highest thus far.
 
